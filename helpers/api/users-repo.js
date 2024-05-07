@@ -1,9 +1,7 @@
-import getConfig from 'next/config';
+
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { db } from 'helpers/api';
-
-const { serverRuntimeConfig } = getConfig();
 const User = db.User;
 
 export const usersRepo = {
@@ -21,7 +19,7 @@ async function authenticate({ username, password }) {
     if (!(user && bcrypt.compareSync(password, user.hash))) {
         throw 'Username or password is incorrect';
     }
-    const token = jwt.sign({ sub: user.id }, serverRuntimeConfig.secret, { expiresIn: '7d' });
+    const token = jwt.sign({ sub: user.id }, "testing", { expiresIn: '7d' });
 
     return {
         ...user.toJSON(),
