@@ -1,4 +1,4 @@
-import getConfig from 'next/config';
+
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
